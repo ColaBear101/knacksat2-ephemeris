@@ -37,7 +37,21 @@ That fetches the TLE from CelesTrak and writes the 7 days from now into a folder
 
 The files reproduce SGP4 to their printed rounding. They were checked against satellite.js, PyEphem and GMAT; see [2026-10-29/CHECKS.md](2026-10-29/CHECKS.md).
 
-The limit is the TLE itself. KNACKSAT-2 is around 343 km and decaying faster than each TLE's drag term assumes: its TLEs in Sep–Oct 2026 ran 32 s late after 18 days. Make a new set every day or two.
+The limit is the TLE itself. KNACKSAT-2 is around 343 km and decaying faster than each TLE's drag term assumes: its TLEs in Sep–Oct 2026 ran 32 s late after 18 days. A weekly set is at its best early in the week; for the best times later in the week, make a fresh set.
+
+## Weekly sets
+
+Every Monday at 00:17 UTC, a GitHub Actions job ([weekly.yml](.github/workflows/weekly.yml)) runs [weekly.py](weekly.py). It:
+
+- fetches the newest TLE;
+- makes the set for the 7 days from 00:00 UTC;
+- checks every pass against PyEphem and the OEM against the CSV, and publishes nothing if a check fails;
+- measures how late the previous week's TLE ran;
+- commits the set here.
+
+Each set gets its own `CHECKS.md` with the results.
+
+The newest set is also copied to [latest/](latest/README.md), so its files always have the same address, for example `https://raw.githubusercontent.com/ColaBear101/knacksat2-ephemeris/main/latest/passes.csv`. To make a set by hand, use **Run workflow** on the Actions tab. Tick "dry run" to make and check a set without committing it.
 
 ## Sets
 

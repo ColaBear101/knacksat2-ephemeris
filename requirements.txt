@@ -1,3 +1,4 @@
 skyfield==1.55
 sgp4==2.27
 numpy==2.4.2
+ephem==4.1.6

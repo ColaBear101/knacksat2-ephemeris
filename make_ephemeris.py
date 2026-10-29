@@ -369,8 +369,8 @@ def main() -> None:
         f" {age_d + a.days:.2f} at the end.",
         "- At this height a TLE goes stale in days. One fitted to past tracking underestimates the"
         " drag to come (KNACKSAT-2's own TLEs in Sep-Oct 2026 ran 32 s late after 18 days), so"
-        " passes late in the span are likely to come early. Make a new set every day or two:"
-        f" `python {Path(__file__).resolve().as_posix()}`.",
+        " passes late in the span are likely to come early. For the best times, make a fresh set"
+        " with `python make_ephemeris.py`.",
         f"- Height above the WGS84 ellipsoid {h.min():.1f}-{h.max():.1f} km over the span (mean {h.mean():.1f}).",
         f"- Station: {STATION_NAME}, {STATION_LAT:.5f} N {STATION_LON:.5f} E, {STATION_ALT_M:g} m.",
         f"- AOS/LOS at {a.min_el:g} deg geometric elevation (no refraction), as the dashboard uses;"
@@ -418,7 +418,7 @@ def main() -> None:
         "Create Spacecraft KNACKSAT2;",
         "GMAT KNACKSAT2.DateFormat = UTCGregorian;",
         f"GMAT KNACKSAT2.Epoch = '{gmat_epoch:%d %b %Y %H:%M:%S}.000';",
-        f"GMAT KNACKSAT2.EphemerisName = '{oem.resolve().as_posix()}';",
+        f"GMAT KNACKSAT2.EphemerisName = '<this folder>/{oem.name}';",
         "Create Propagator OEMProp;",
         "GMAT OEMProp.Type = CCSDS-OEM;",
         "GMAT OEMProp.StepSize = 60;",
@@ -426,6 +426,9 @@ def main() -> None:
         "BeginMissionSequence;",
         f"Propagate OEMProp(KNACKSAT2) {{KNACKSAT2.ElapsedDays = {a.days - 1 / 24:.4f}}};",
         "```",
+        "",
+        "Put this folder's full path in place of `<this folder>`: GMAT reads a relative path"
+        " from its own bin folder.",
         "",
     ]
     (out / "README.md").write_text("\n".join(md), encoding="utf-8")
