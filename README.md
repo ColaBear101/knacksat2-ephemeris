@@ -55,4 +55,5 @@ The newest set is also copied to [latest/](latest/README.md), so its files alway
 
 ## Sets
 
+- [2026-11-02](2026-11-02/README.md): 2 Nov to 9 Nov 2026, from the TLE of 1 Nov 14:13 UTC
 - [2026-10-29](2026-10-29/README.md): 29 Oct to 5 Nov 2026, from the TLE of 28 Oct 08:15 UTC
