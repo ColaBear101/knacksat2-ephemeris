@@ -1,18 +1,18 @@
-# KNACKSAT-2 ephemerides, 02 Nov 2026 00:00 UTC + 7 days
+# KNACKSAT-2 ephemerides, 09 Nov 2026 00:00 UTC + 7 days
 
-Made 2026-11-02T06:04:23Z by `make_ephemeris.py` (Skyfield SGP4). Elements from CelesTrak (gp.php?CATNR=67683), fetched 2026-11-02T06:04Z:
+Made 2026-11-09T06:30:10Z by `make_ephemeris.py` (Skyfield SGP4). Elements from CelesTrak (gp.php?CATNR=67683), fetched 2026-11-09T06:30Z:
 
 ```
 KNACKSAT-2
-1 67683U 98067YA  26305.59236765  .00104975  00000+0  64115-3 0  9994
-2 67683  51.6239 316.0163 0010026  22.7171 337.4271 15.76495325 41826
+1 67683U 98067YA  26311.23189889  .00158629  00000+0  90831-3 0  9995
+2 67683  51.6228 286.9141 0009576  49.5310 310.6524 15.77766899 42716
 ```
 
-- TLE epoch **2026-11-01T14:13:01Z**: 0.41 days old at the start of the span, 7.41 at the end.
+- TLE epoch **2026-11-07T05:33:56Z**: 1.77 days old at the start of the span, 8.77 at the end.
 - At this height a TLE goes stale in days. One fitted to past tracking underestimates the drag to come (KNACKSAT-2's own TLEs in Sep-Oct 2026 ran 32 s late after 18 days), so passes late in the span are likely to come early. For the best times, make a fresh set with `python make_ephemeris.py`.
-- Height above the WGS84 ellipsoid 330.2-361.2 km over the span (mean 344.4).
+- Height above the WGS84 ellipsoid 325.4-358.3 km over the span (mean 338.2).
 - Station: Bangkok ground station, 13.82378 N 100.51295 E, 60 m.
-- AOS/LOS at 0 deg geometric elevation (no refraction), as the dashboard uses; 14 of 29 passes peak at 10 deg or more.
+- AOS/LOS at 0 deg geometric elevation (no refraction), as the dashboard uses; 18 of 28 passes peak at 10 deg or more.
 - Azimuth from true north through east. Range rate positive when receding.
 - Doppler: `uhf_rx` is what reaches the station from 400.630 MHz; `vhf_tx` is what to send so the digipeater hears 145.825 MHz.
 - GCRF is Skyfield's GCRS. The OEM is the same states in EME2000 (J2000 mean equator), rotated by the IERS frame bias, which moves a point here by under a metre.
@@ -20,10 +20,10 @@ KNACKSAT-2
 
 | File | What |
 |---|---|
-| `passes.csv` | 29 passes: AOS/TCA/LOS in UTC and ICT, azimuths, peak elevation |
-| `pass_tracks.csv` | 13577 rows, every 1 s of every pass: az/el, range, range rate, Doppler |
+| `passes.csv` | 28 passes: AOS/TCA/LOS in UTC and ICT, azimuths, peak elevation |
+| `pass_tracks.csv` | 12586 rows, every 1 s of every pass: az/el, range, range rate, Doppler |
 | `geocentric.csv` | 10081 rows, every 60 s: lat/lon/alt and GCRF position/velocity |
-| `KNACKSAT-2_2026-11-02.oem` | CCSDS OEM 1.0, EME2000, UTC, the same 10081 states |
+| `KNACKSAT-2_2026-11-09.oem` | CCSDS OEM 1.0, EME2000, UTC, the same 10081 states |
 | `tle.txt` | the elements above |
 
 ## Passes over the station
@@ -32,43 +32,42 @@ Times are rounded to the second. ICT = UTC+7. Peaks of 10° or more are in bold.
 
 | # | AOS (ICT) | LOS (ICT) | AOS (UTC) | Dur | Peak | Azimuth AOS / peak / LOS | Sun |
 |---:|---|---|---|---:|---:|---|---|
-| 1 | Mon 02 Nov 07:02:00 | 07:07:19 | 02 Nov 00:02:00 | 5:18 | 3.2° | 270° W / 237° SW / 203° SW | yes |
-| 2 | Mon 02 Nov 18:29:45 | 18:38:55 | 02 Nov 11:29:45 | 9:09 | **27.2°** | 199° S / 125° SE / 51° NE | part |
-| 3 | Mon 02 Nov 20:05:51 | 20:12:50 | 02 Nov 13:05:51 | 6:59 | 6.8° | 265° W / 312° NW / 0° N | part |
-| 4 | Tue 03 Nov 04:13:12 | 04:20:46 | 02 Nov 21:13:12 | 7:34 | 8.5° | 356° N / 48° NE / 100° E | part |
-| 5 | Tue 03 Nov 05:47:21 | 05:56:33 | 02 Nov 22:47:21 | 9:12 | **23.7°** | 306° NW / 235° SW / 163° S | part |
-| 6 | Tue 03 Nov 17:18:43 | 17:24:23 | 03 Nov 10:18:43 | 5:40 | 3.9° | 161° S / 124° SE / 87° E | yes |
-| 7 | Tue 03 Nov 18:51:36 | 19:00:57 | 03 Nov 11:51:36 | 9:21 | **36.4°** | 229° SW / 308° NW / 27° NE | part |
-| 8 | Wed 04 Nov 04:34:13 | 04:43:46 | 03 Nov 21:34:13 | 9:33 | **40.2°** | 332° NW / 52° NE / 132° SE | part |
-| 9 | Wed 04 Nov 06:10:53 | 06:16:33 | 03 Nov 23:10:53 | 5:40 | 3.8° | 273° W / 236° SW / 200° S | part |
-| 10 | Wed 04 Nov 17:38:41 | 17:47:44 | 04 Nov 10:38:41 | 9:03 | **24.5°** | 198° S / 125° SE / 53° NE | yes |
-| 11 | Wed 04 Nov 19:14:34 | 19:21:46 | 04 Nov 12:14:34 | 7:12 | 7.5° | 263° W / 312° NW / 2° N | part |
-| 12 | Thu 05 Nov 03:22:01 | 03:29:19 | 04 Nov 20:22:01 | 7:17 | 7.5° | 358° N / 48° NE / 97° E | no |
-| 13 | Thu 05 Nov 04:56:00 | 05:05:16 | 04 Nov 21:56:00 | 9:16 | **26.3°** | 308° NW / 235° SW / 161° S | part |
-| 14 | Thu 05 Nov 16:27:28 | 16:32:38 | 05 Nov 09:27:28 | 5:10 | 3.1° | 157° SE / 124° SE / 90° E | yes |
-| 15 | Thu 05 Nov 18:00:02 | 18:09:26 | 05 Nov 11:00:02 | 9:23 | **41.6°** | 227° SW / 308° NW / 29° NE | yes |
-| 16 | Fri 06 Nov 03:42:34 | 03:52:01 | 05 Nov 20:42:34 | 9:27 | **35.0°** | 333° NW / 52° NE / 130° SE | part |
-| 17 | Fri 06 Nov 05:18:57 | 05:25:03 | 05 Nov 22:18:57 | 6:05 | 4.5° | 276° W / 236° SW / 197° S | part |
-| 18 | Fri 06 Nov 16:46:50 | 16:55:46 | 06 Nov 09:46:50 | 8:55 | **21.5°** | 195° S / 125° SE / 55° NE | yes |
-| 19 | Fri 06 Nov 18:22:28 | 18:29:56 | 06 Nov 11:22:28 | 7:27 | 8.5° | 260° W / 312° NW / 4° N | yes |
-| 20 | Sat 07 Nov 02:30:06 | 02:37:02 | 06 Nov 19:30:06 | 6:56 | 6.5° | 1° N / 47° NE / 94° E | no |
-| 21 | Sat 07 Nov 04:03:52 | 04:13:12 | 06 Nov 21:03:52 | 9:20 | **30.1°** | 310° NW / 234° SW / 159° S | no |
-| 22 | Sat 07 Nov 15:35:32 | 15:39:58 | 07 Nov 08:35:32 | 4:26 | 2.2° | 152° SE / 123° SE / 95° E | yes |
-| 23 | Sat 07 Nov 17:07:41 | 17:17:07 | 07 Nov 10:07:41 | 9:26 | **49.7°** | 225° SW / 308° NW / 31° NE | yes |
-| 24 | Sun 08 Nov 02:50:07 | 02:59:27 | 07 Nov 19:50:07 | 9:20 | **29.7°** | 335° NW / 51° NE / 127° SE | no |
-| 25 | Sun 08 Nov 04:26:13 | 04:32:46 | 07 Nov 21:26:13 | 6:33 | 5.6° | 279° W / 236° SW / 193° S | no |
-| 26 | Sun 08 Nov 15:54:13 | 16:02:58 | 08 Nov 08:54:13 | 8:44 | **18.4°** | 192° S / 125° SE / 58° NE | yes |
-| 27 | Sun 08 Nov 17:29:34 | 17:37:19 | 08 Nov 10:29:34 | 7:45 | 9.9° | 256° W / 311° NW / 7° N | yes |
-| 28 | Mon 09 Nov 01:37:26 | 01:43:53 | 08 Nov 18:37:26 | 6:27 | 5.3° | 4° N / 47° NE / 90° E | no |
-| 29 | Mon 09 Nov 03:10:55 | 03:20:20 | 08 Nov 20:10:55 | 9:25 | **36.0°** | 312° NW / 234° SW / 156° SE | no |
+| 1 | Mon 09 Nov 14:42:49 | 14:46:01 | 09 Nov 07:42:49 | 3:12 | 1.1° | 143° SE / 123° SE / 103° E | yes |
+| 2 | Mon 09 Nov 16:14:17 | 16:23:45 | 09 Nov 09:14:17 | 9:27 | **63.2°** | 222° SW / 307° NW / 33° NE | yes |
+| 3 | Tue 10 Nov 01:56:33 | 02:05:41 | 09 Nov 18:56:33 | 9:07 | **24.4°** | 338° N / 51° NE / 124° SE | no |
+| 4 | Tue 10 Nov 03:32:16 | 03:39:18 | 09 Nov 20:32:16 | 7:02 | 7.0° | 284° W / 236° SW / 188° S | no |
+| 5 | Tue 10 Nov 15:00:19 | 15:08:46 | 10 Nov 08:00:19 | 8:26 | **15.1°** | 188° S / 125° SE / 61° NE | yes |
+| 6 | Tue 10 Nov 16:35:16 | 16:43:21 | 10 Nov 09:35:16 | 8:04 | **11.8°** | 252° W / 311° NW / 10° N | yes |
+| 7 | Wed 11 Nov 00:43:23 | 00:49:05 | 10 Nov 17:43:23 | 5:41 | 3.8° | 9° N / 46° NE / 83° E | no |
+| 8 | Wed 11 Nov 02:16:28 | 02:25:56 | 10 Nov 19:16:28 | 9:27 | **46.6°** | 315° NW / 234° SW / 152° SE | no |
+| 9 | Wed 11 Nov 15:19:39 | 15:29:07 | 11 Nov 08:19:39 | 9:28 | **85.0°** | 218° SW / 307° NW / 37° NE | yes |
+| 10 | Wed 11 Nov 16:58:07 | 17:00:50 | 11 Nov 09:58:07 | 2:43 | 0.7° | 298° NW / 315° NW / 333° NW | yes |
+| 11 | Thu 12 Nov 01:01:47 | 01:10:39 | 11 Nov 18:01:47 | 8:51 | **19.5°** | 342° N / 51° NE / 119° SE | no |
+| 12 | Thu 12 Nov 02:37:06 | 02:44:39 | 11 Nov 19:37:06 | 7:32 | 9.0° | 288° W / 236° SW / 183° S | no |
+| 13 | Thu 12 Nov 14:05:19 | 14:13:21 | 12 Nov 07:05:19 | 8:02 | **11.9°** | 183° S / 124° SE / 66° NE | yes |
+| 14 | Thu 12 Nov 15:39:49 | 15:48:14 | 12 Nov 08:39:49 | 8:25 | **14.7°** | 247° SW / 310° NW / 14° N | yes |
+| 15 | Thu 12 Nov 23:48:24 | 23:53:01 | 12 Nov 16:48:24 | 4:36 | 2.3° | 16° N / 46° NE / 75° E | no |
+| 16 | Fri 13 Nov 01:20:57 | 01:30:27 | 12 Nov 18:20:57 | 9:29 | **65.2°** | 319° NW / 234° SW / 148° SE | no |
+| 17 | Fri 13 Nov 14:23:49 | 14:33:15 | 13 Nov 07:23:49 | 9:25 | **67.5°** | 213° SW / 127° SE / 40° NE | yes |
+| 18 | Fri 13 Nov 16:01:21 | 16:05:42 | 13 Nov 09:01:21 | 4:21 | 2.0° | 287° W / 315° NW / 342° N | yes |
+| 19 | Sat 14 Nov 00:05:51 | 00:14:20 | 13 Nov 17:05:51 | 8:29 | **15.1°** | 346° N / 50° NE / 114° SE | no |
+| 20 | Sat 14 Nov 01:40:43 | 01:48:46 | 13 Nov 18:40:43 | 8:02 | **11.7°** | 294° NW / 236° SW / 177° S | no |
+| 21 | Sat 14 Nov 13:09:11 | 13:16:38 | 14 Nov 06:09:11 | 7:27 | 8.8° | 177° S / 124° SE / 72° E | yes |
+| 22 | Sat 14 Nov 14:43:08 | 14:51:53 | 14 Nov 07:43:08 | 8:44 | **18.9°** | 241° SW / 310° NW / 18° N | yes |
+| 23 | Sat 14 Nov 22:52:34 | 22:55:18 | 14 Nov 15:52:34 | 2:43 | 0.7° | 28° NE / 45° NE / 62° NE | no |
+| 24 | Sun 15 Nov 00:24:13 | 00:33:42 | 14 Nov 17:24:13 | 9:28 | **84.6°** | 323° NW / 53° NE / 142° SE | no |
+| 25 | Sun 15 Nov 13:26:48 | 13:36:07 | 15 Nov 06:26:48 | 9:19 | **44.2°** | 207° SW / 126° SE / 45° NE | yes |
+| 26 | Sun 15 Nov 15:03:31 | 15:09:07 | 15 Nov 08:03:31 | 5:35 | 3.7° | 277° W / 314° NW / 351° N | yes |
+| 27 | Sun 15 Nov 23:08:43 | 23:16:41 | 15 Nov 16:08:43 | 7:58 | **11.2°** | 351° N / 49° NE / 107° E | no |
+| 28 | Mon 16 Nov 00:43:07 | 00:51:37 | 15 Nov 17:43:07 | 8:30 | **15.8°** | 299° NW / 235° SW / 171° S | no |
 
 ## Loading the OEM in GMAT
 
 ```
 Create Spacecraft KNACKSAT2;
 GMAT KNACKSAT2.DateFormat = UTCGregorian;
-GMAT KNACKSAT2.Epoch = '02 Nov 2026 00:10:00.000';
-GMAT KNACKSAT2.EphemerisName = '<this folder>/KNACKSAT-2_2026-11-02.oem';
+GMAT KNACKSAT2.Epoch = '09 Nov 2026 00:10:00.000';
+GMAT KNACKSAT2.EphemerisName = '<this folder>/KNACKSAT-2_2026-11-09.oem';
 Create Propagator OEMProp;
 GMAT OEMProp.Type = CCSDS-OEM;
 GMAT OEMProp.StepSize = 60;
